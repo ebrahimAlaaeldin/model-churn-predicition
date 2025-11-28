@@ -1,11 +1,24 @@
 {
-  "version": 1,
+  "version": 2,
   "builds": [
-    { "src": "api/*.py", "use": "@vercel/python" },
-    { "src": "frontend/churn-predictor.html", "use": "@vercel/static" }
+    {
+      "src": "api/predict.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "public/*",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.py" },
-    { "src": "/", "dest": "frontend/index.html" }
+    {
+      "src": "/predict",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
   ]
 }
