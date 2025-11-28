@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px; 
             line-height: 1.6;
         }
 
@@ -610,13 +610,12 @@
             });
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/predict', {
+                const response = await fetch('/predict', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
+
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
